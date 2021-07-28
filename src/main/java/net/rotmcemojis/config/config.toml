@@ -1,0 +1,5 @@
+[lang]
+prefix = "§b[RotMC] "
+nopermission = "§cYou dont have permission to use Emojis!"
+invalidcharprefix = "§cSpecial characters such as '"
+invalidcharsuffix = "§c' are not allowed!"
