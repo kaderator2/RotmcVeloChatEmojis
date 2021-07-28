@@ -4,11 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum listOfEmoji {
+    // Emoji types
     VALORCRY("valorcry", "⌀"),
     VALORSALUTE("valorsalute", "⌱"),
     VALORSAD("valorsad", "⌁"),
     VALORANGRY("valorangry", "⌇"),
     VALORHAPPY("valorhappy", "⌰");
+
+
     private static final Map<String, listOfEmoji> IDENTIFIER = new HashMap<>();
     private static final Map<String, listOfEmoji> ASCIIVERSION = new HashMap<>();
     static {

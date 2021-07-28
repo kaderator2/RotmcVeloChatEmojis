@@ -5,9 +5,7 @@ import com.moandjiezana.toml.Toml;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
 import com.velocitypowered.api.plugin.Plugin;
-import com.velocitypowered.api.plugin.annotation.DataDirectory;
 import com.velocitypowered.api.proxy.ProxyServer;
-import jdk.nashorn.internal.objects.annotations.Getter;
 import org.slf4j.Logger;
 import java.io.File;
 import java.io.IOException;
@@ -85,7 +83,6 @@ public class ROTMCEmojiHandler {
                 logger.warn("Failed to load config.toml. Shutting down.");
             } else {
                 //starts listener
-
                 proxy.getEventManager().register(this, new ROTMCEmojiHandlerChat(proxy, toml));
                 logger.info("Plugin has enabled!");
             }

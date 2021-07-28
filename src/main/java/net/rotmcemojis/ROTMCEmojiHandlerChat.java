@@ -16,6 +16,7 @@ public class ROTMCEmojiHandlerChat {
     private final String langNoPermission;
     private final String langInvalidCharPrefix;
     private final String langInvalidCharSuffix;
+    // characters permitted in chat
     private final String[] allowedCharacters = {"1", "2", "3", "4", "5", "6", "7", "8",
             "9", "0", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
             "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y",
@@ -34,6 +35,8 @@ public class ROTMCEmojiHandlerChat {
         this.langInvalidCharSuffix = lang.getString("invalidcharsuffix");
 
     }
+
+    // Returns boolean value if the message contains an emoji.
     private boolean messageContainsEmoji(String message){
         for (listOfEmoji x: listOfEmoji.values()){
             if (message.contains(x.identifier)){
@@ -42,6 +45,7 @@ public class ROTMCEmojiHandlerChat {
         }
         return false;
     }
+    // Replaces emoji Identifiers with ASCII equivalent from listOfEmoji Enums in a chat message.
     private String replaceMessageEmojiForASCII(String message){
         for (listOfEmoji x: listOfEmoji.values()){
             if (message.contains(x.identifier)){
@@ -50,6 +54,7 @@ public class ROTMCEmojiHandlerChat {
         }
         return message;
     }
+    // Returns blacklisted char if message contains one, Null if chat message is valid.
     private String checkForBlacklistedCharacters(String message){
         String[] messageArray = message.split("(?!^)");
         for(String m : messageArray){
@@ -82,8 +87,7 @@ public class ROTMCEmojiHandlerChat {
             return;
         }
         if (player.hasPermission("emojichat") && messageContainsEmoji(message)) {
-            // they don't have permission, and the message contains an emoji so it shouldn't be passed to the backend.
-            //e.setResult(PlayerChatEvent.ChatResult.denied());
+            // adds emoji to chat message then sends it.
             String newMessage = replaceMessageEmojiForASCII(message);
             e.setResult(PlayerChatEvent.ChatResult.message(newMessage));
             return;
